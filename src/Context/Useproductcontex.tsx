@@ -12,21 +12,20 @@ export interface context{
  
 
 interface productcontex{
-openmodal: () => void
 
 
 }
 
 
 export interface stateprops{
-
+ 
 
 
 }
 
 const getlocalstorage = () =>{
 
- const data=localStorage.getItem('tolu-kaban')
+  const data=localStorage.getItem('tolu-kaban')
   return data?JSON.parse(data):{ boards:[],boardsid:[],
   currentBoardid:''}
 }
@@ -47,11 +46,6 @@ const ProductContext =createContext ( {} as productcontex)
 
   const [state,dispatch]=React.useReducer(reducer,initialState)
 
-  const openmodal=()=>{
-
-  }
-
-
   useEffect(()=>{
 
   })
@@ -59,7 +53,7 @@ const ProductContext =createContext ( {} as productcontex)
 
   return (
 
-    <ProductContext.Provider value={{...state, openmodal}}>
+    <ProductContext.Provider value={...state}>
 
       {children}
 
@@ -67,10 +61,5 @@ const ProductContext =createContext ( {} as productcontex)
     </ProductContext.Provider>
   )
 
-}
-
-
-export const useProductContext=():productcontex=>{
-  return useContext(ProductContext)
 
 }
